@@ -14,6 +14,11 @@
 4. 点击 `提交`
 
 
+------
+
+
+如果安装插件遇到问题，请用B.app扫码以下二维码，联系官方客服  
+![请用B.app扫码](https://www.b.app/assets/img/pic/customer_service_qrcode.png)
 
 
 
