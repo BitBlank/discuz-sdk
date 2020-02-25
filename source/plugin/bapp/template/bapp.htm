@@ -1,0 +1,40 @@
+<!--{if ($bapp['integral_proportion'] && $bapp['integral_type'] && $bapp['appkey'] && $bapp['appsecret'])}-->
+<div>
+    <ul class="creditl mtm bbda cl">
+        <li><em> 1元 = {$bapp['integral_proportion']}
+            {$_G['setting']['extcredits'][$bapp['integral_type']]['title']} </em></li>
+    </ul>
+    <table class="tfm mtn">
+        <tbody>
+        <tr>
+            <th>充值金额（元）:</th>
+            <td><input title="金额" type="text" name="money" id="money" size="10"/></td>
+        </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <td>
+                <button type="button" onclick="pay()" class="vm">充值</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<!--{else}-->
+<p><strong>支付功能尚未配置</strong></p>
+<!--{/if}-->
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function pay() {
+        var money = $('#money').val();
+        $.post("plugin.php?id=bapp", {action: "pay", money: money}, function (dataStr) {
+            var data = JSON.parse(dataStr);
+            if (data.code !== 200) {
+                alert(data.msg);
+                return;
+            }
+            window.location.href = data.data.pay_url;
+        });
+    }
+</script>
